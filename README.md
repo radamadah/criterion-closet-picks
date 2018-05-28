@@ -17,7 +17,7 @@ To generate a version to host on a webpage, run:
 ``` bash
 python3 criterion-closet-picks.py build
 ```
-and copy the contents of the `bin` folder to your website.
+and copy the generated `index.html` to your website.
 
 ## Data
 The code expects four CSV files in the `data` folder: `data/countries.csv`, `data/directors.csv`, `data/movies.csv`, and `data/visits.csv`.
