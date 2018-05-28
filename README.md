@@ -1,6 +1,6 @@
 # Criterion Collection Closet Picks Data Visualization
 
-This generates a web page that displays data associated with the tastes of the people who appear in the _Closet Picks_ video series from [https://criterion.com](the Criterion Collection).
+This generates a web page that displays data associated with the tastes of the people who appear in the _Closet Picks_ video series from [the Criterion Collection](https://criterion.com) (I'm not associated with Criterion in any way, beyond enjoying their releases).
 
 ## Run
 
