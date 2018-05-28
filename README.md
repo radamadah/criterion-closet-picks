@@ -1,6 +1,6 @@
 # Criterion Collection Closet Picks Data Visualization
 
-This generates a web page that displays data associated with the tastes of the people who appear in the _Closet Picks_ video series from [https://criterion.com](the Criterion Collection).
+This generates a web page that displays data associated with the tastes of the people who appear in the _Closet Picks_ video series from [the Criterion Collection](https://criterion.com) (I'm not associated with Criterion in any way, beyond enjoying their releases).
 
 ## Run
 
@@ -17,7 +17,7 @@ To generate a version to host on a webpage, run:
 ``` bash
 python3 criterion-closet-picks.py build
 ```
-and copy the contents of the `bin` folder to your website.
+and copy the generated `index.html` to your website.
 
 ## Data
 The code expects four CSV files in the `data` folder: `data/countries.csv`, `data/directors.csv`, `data/movies.csv`, and `data/visits.csv`.
