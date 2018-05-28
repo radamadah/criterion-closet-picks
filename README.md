@@ -57,6 +57,6 @@ Where `date` is a timestamp that is when the video was published, `visitors` is 
 Since not all Criterion box sets have spine numbers, and several visitors took Criterion box sets, we need a means of representating the sorts of movies they took - here is my rationale:
 
 - if the box set has a spine number, reference it directly (there is no issue)
-- if the box set doesn't have a spine number, but one of its discs does, reference one of the discs and discuss that in the visits `notes`
+- if the box set doesn't have a spine number, but one of its discs does, reference one of the discs and discuss that in the visit's `notes`
 - if the box set doesn't have a spine number, and none of its discs has one either, then don't substitute any spine, and state that missing box set in `notes`
 

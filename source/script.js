@@ -351,6 +351,6 @@ function MovieListView(jason){
 
 function FooterView(){
 	var element = document.createElement('footer');
-	element.appendChild(document.createElement('small')).innerHTML = 'The data for this chart was gathered by hand from the videos on this <a href="https://www.youtube.com/playlist?list=PLFk8lnn1nEEID1NNh7vCZuU5Y4r2YrheR">YouTube playlist</a>. If there are any omissions or errors, let me know - <a href="https://twitter.com/radamadah">@radamadah</a>.</br>Coded with d3.js. If you want to contribute to this thing, it\'s a public repo on Github (<a href="https://github.com/radamadah/criterion-histogram">https://github.com/radamadah/criterion-closet-picks</a>), and I\'ll take any good PRs! Last updated 2018-05-27.';
+	element.appendChild(document.createElement('small')).innerHTML = 'The data for this chart was gathered by hand from the videos on this <a href="https://www.youtube.com/playlist?list=PLFk8lnn1nEEID1NNh7vCZuU5Y4r2YrheR">YouTube playlist</a>. If there are any omissions or errors, let me know - <a href="https://twitter.com/radamadah">@radamadah</a>.</br>Coded with d3.js. If you want to contribute to this thing, it\'s a public repo on Github (<a href="https://github.com/radamadah/criterion-closet-picks">https://github.com/radamadah/criterion-closet-picks</a>), and I\'ll take any good PRs! Last updated 2018-05-27.';
 	return element;
 }
