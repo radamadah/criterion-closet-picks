@@ -194,7 +194,7 @@ function OverView(jason){
 	let directors = popularSet(jason.directors, function(d){ return d.movies.length });
 	let countries = popularSet(jason.countries, function(c){ return c.movies.length });
 	let i18n = {
-		movies_count: (movies.popular.length > 1) ? '<span class="interactive">'+movies.popular.length+'</span> movies' : 'movie',
+		movies_count: (movies.popular.length > 1) ? 'movies' : 'movie',
 		movies_be: (movies.popular.length > 1) ? 'are' : 'is',
 		movies_list: prettyList(movies.popular.map(function(m){ return '<cite class="interactive">'+m.title+'</cite>' })),
 		apiece: (movies.popular.length > 1) ? ' apiece' : '',
@@ -273,6 +273,6 @@ function MovieListView(jason){
 };
 function FooterView(){
 	var element = document.createElement('footer');
-	element.appendChild(document.createElement('small')).innerHTML = 'The data for this chart was gathered by hand -- if there are any omissions or errors, let me know: <a href="https://twitter.com/radamadah">@radamadah</a>.</br>Coded with d3.js. If you want to contribute to this thing, it\'s a public repo on Github (<a href="https://github.com/radamadah/criterion-closet-picks">https://github.com/radamadah/criterion-closet-picks</a>), and I\'ll take any good PRs! Last updated 2018-05-28.';
+	element.appendChild(document.createElement('small')).innerHTML = 'The data for this chart was gathered by hand -- if there are any omissions or errors, let me know: <a href="https://twitter.com/radamadah">@radamadah</a>.</br>Coded with d3.js. If you want to contribute to this thing, it\'s a public repo on Github (<a href="https://github.com/radamadah/criterion-closet-picks">https://github.com/radamadah/criterion-closet-picks</a>), and I\'ll take any good PRs! Last updated 2018-07-15.';
 	return element;
 }

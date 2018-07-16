@@ -6,10 +6,18 @@ def generate(path):
         index_file = '<!DOCTYPE html>' + \
                      '<html class="night-mode">'+\
                      '<meta charset="utf-8"/>'+\
-                     '<meta http-equiv="X-UA-Compatible" content="IE=edge"/>'+\
-                     '<meta name="viewport" content="width=device-width, initial-scale=1"/>'+\
                      '<meta name="theme-color" content="#E9967A"/>'+\
-                     '<meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@radamadah"/><meta name="twitter:creator" content="@radamadah"/><meta name="twitter:title" content="Criterion Closet Picks Data Visualization"/><meta name="twitter:description" content="A quick graphic that shows the movie tastes of visitors to Criterion Collection\' DVD Closet."/><meta name="twitter:image" content="chart.svg"/>'+\
+                     '<meta name="twitter:card" content="summary"/>'+\
+                     '<meta name="twitter:site" content="@radamadah"/>'+\
+                     '<meta name="twitter:creator" content="@radamadah"/>'+\
+                     '<meta name="twitter:title" content="Criterion Closet Picks Data Visualization"/>'+\
+                     '<meta name="twitter:description" content="A quick graphic that shows the movie tastes of visitors to the Criterion Collection\'s DVD Closet."/>'+\
+                     '<meta name="twitter:image" content="chart.png"/>'+\
+                     '<meta property="og:title" content="Criterion Closet Picks Data Visualization" />'+\
+                     '<meta property="og:description" content="A quick graphic that shows the movie tastes of visitors to the Criterion Collection\'s DVD Closet." />'+\
+                     '<meta property="og:type" content="website" />'+\
+                     '<meta property="og:url" content="http://adamhadar.me/things/criterion-closet-picks/" />'+\
+                     '<meta property="og:image" content="http://adamhadar.me/things/criterion-closet-picks/chart.png" />'+\
                      '<title>Criterion Closet Picks Data Viz</title>'
         # Stylesheet
         with open('source/style.css') as f:
