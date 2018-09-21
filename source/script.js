@@ -88,7 +88,7 @@ function comparArray(a,b,c){ return a[c].length > b[c].length? 1 : b[c].length >
 function preprocessData(jason){
 	window.margin = {top: 30, right: 14, bottom: 20, left: 30};
 	window.SPINE_COUNT = 1100;
-	window.VISIT_COUNT = Math.ceil(Math.sqrt(Object.keys(jason.visits).length)) + 1;
+	window.VISIT_COUNT = Math.ceil(Math.sqrt(Object.keys(jason.visits).length)) + 2;
 	window.width = SPINE_COUNT*1.3 - margin.left - margin.right;
 	window.height = 600 - margin.top - margin.bottom;
 	window.bin_width = width/SPINE_COUNT;
@@ -273,6 +273,6 @@ function MovieListView(jason){
 };
 function FooterView(){
 	var element = document.createElement('footer');
-	element.appendChild(document.createElement('small')).innerHTML = 'The data for this chart was gathered by hand -- if there are any omissions or errors, let me know: <a href="https://twitter.com/radamadah">@radamadah</a>.</br>Coded with d3.js. If you want to contribute to this thing, it\'s a public repo on Github (<a href="https://github.com/radamadah/criterion-closet-picks">https://github.com/radamadah/criterion-closet-picks</a>), and I\'ll take any good PRs! Last updated 2018-08-08.';
+	element.appendChild(document.createElement('small')).innerHTML = 'The data for this chart was gathered by hand -- if there are any omissions or errors, let me know: <a href="https://twitter.com/radamadah">@radamadah</a>.</br>Coded with d3.js. If you want to contribute to this thing, it\'s a public repo on Github (<a href="https://github.com/radamadah/criterion-closet-picks">https://github.com/radamadah/criterion-closet-picks</a>), and I\'ll take any good PRs! Last updated 2018-09-20.';
 	return element;
 }
