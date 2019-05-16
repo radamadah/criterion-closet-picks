@@ -5,7 +5,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import source.compile as compile
 import source.searcher as Searcher
 import source.getter as Getter
-
+import source.adder as Adder
 
 class server(BaseHTTPRequestHandler):
 	def do_GET(self):
@@ -36,5 +36,5 @@ if __name__ == '__main__':
 		getter.write()
 
 	elif argv[1] == 'add':
-		adder = Adder.addder(argv[2])
-		adder.run(argv[3])
+		adder = Adder.adder(argv[2])
+		adder.run()
