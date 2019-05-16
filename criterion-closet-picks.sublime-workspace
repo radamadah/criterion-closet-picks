@@ -1,0 +1,426 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"direc",
+				"director"
+			],
+			[
+				"direct",
+				"directors"
+			],
+			[
+				"on",
+				"on-criterion"
+			],
+			[
+				"write",
+				"write_hits"
+			],
+			[
+				"vi",
+				"visit_search"
+			],
+			[
+				"movie",
+				"movie_search"
+			],
+			[
+				"dir",
+				"director_search"
+			],
+			[
+				"countr",
+				"country_search"
+			],
+			[
+				"append",
+				"appendChild"
+			],
+			[
+				"appen",
+				"appendChild"
+			],
+			[
+				"attr",
+				"attrs_str"
+			],
+			[
+				"curet",
+				"current"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "criterion-closet-picks.py",
+			"settings":
+			{
+				"buffer_size": 1305,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/getter.py",
+			"settings":
+			{
+				"buffer_size": 9644,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 3365,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/visits.csv",
+			"settings":
+			{
+				"buffer_size": 11810,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/adamhadar/Documents/programming/criterion-closet-picks",
+		"/Users/adamhadar/Documents/programming/criterion-closet-picks/data",
+		"/Users/adamhadar/Documents/programming/criterion-closet-picks/source"
+	],
+	"file_history":
+	[
+		"/Users/adamhadar/Documents/programming/criterion-closet-picks/source/searcher.py",
+		"/Users/adamhadar/Documents/programming/criterion-closet-picks/data/countries.csv",
+		"/Users/adamhadar/Documents/programming/criterion-closet-picks/data/visits.csv",
+		"/Users/adamhadar/Documents/programming/criterion-closet-picks/data/movies.csv",
+		"/Users/adamhadar/Documents/programming/criterion-closet-picks/data/directors.csv",
+		"/Users/adamhadar/Documents/programming/criterion-closet-picks/source/compile.py",
+		"/Users/adamhadar/Documents/games/microstudies copy/main.js",
+		"/Users/adamhadar/Documents/programming/ekgo.io/ekgo_io/landing/templates/quiz.html",
+		"/Users/adamhadar/Documents/programming/ekgo.io/ekgo_io/landing/views.py",
+		"/Users/adamhadar/Documents/programming/ekgo.io/ekgo_io/landing/templates/test_me.html",
+		"/Users/adamhadar/Documents/programming/ekgo.io/ekgo_io/static/css/landing_navbar.css",
+		"/Users/adamhadar/Documents/programming/ekgo.io/ekgo_io/landing/templates/components/navbar.html",
+		"/Users/adamhadar/Documents/programming/ekgo.io/ekgo_io/landing/templates/test_me/test_me.html"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"url",
+			"compile",
+			"('{\\",
+			"+\\\n",
+			".'",
+			"+\\\n",
+			"():"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "criterion-closet-picks.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1188,
+								1188
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 8,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/getter.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6589,
+								6589
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 8,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 368.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3365,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1601,
+								1601
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "data/visits.csv",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11810,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.681558098592,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 109.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "criterion-closet-picks.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"vis",
+				"data/visits.csv"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 253.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
