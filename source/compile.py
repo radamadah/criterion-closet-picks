@@ -55,7 +55,7 @@ def generate(path):
 	index_file.appendChild(DOMElement('title').appendChild(DOMString('Criterion Closet Picks Data Viz')))
 	# Stylesheet
 	with open('source/style.css') as f:
-		index_file.appendChild(DOMElement('style').appendChild(f.read()))
+		index_file.appendChild(DOMElement('style').appendChild(DOMString(f.read())))
 	# Scripts
 	index_file.appendChild( DOMElement('script', { 'src': 'https://d3js.org/d3.v4.min.js' }) )
 	visitsObj = ''
@@ -98,8 +98,8 @@ def generate(path):
 		for line in csv:
 			directors.append('{name: "'+line.rstrip()+'"}')
 		directorsObj = '['+','.join(directors)+']'
-	index_file.appendChild( DOMElement('script').appendChild('document.addEventListener("DOMContentLoaded", function(){ run({visits: '+visitsObj+', countries: '+countriesObj+', directors: '+directorsObj+', movies: '+moviesObj+'}); });') )
+	index_file.appendChild( DOMElement('script').appendChild(DOMString('document.addEventListener("DOMContentLoaded", function(){ run({visits: '+visitsObj+', countries: '+countriesObj+', directors: '+directorsObj+', movies: '+moviesObj+'}); });')) )
 	with open('source/script.js') as f:
-		index_file.appendChild( DOMElement('script').appendChild(f.read()) )
+		index_file.appendChild( DOMElement('script').appendChild(DOMString(f.read())) )
 	# index_file += '</html>'
 	return {'response_type': 200, 'body': '<!DOCTYPE html>'+index_file.write() }

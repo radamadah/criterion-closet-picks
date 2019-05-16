@@ -30,7 +30,7 @@ function ListView(items, title, isValidFunc, listItemNumFunc, listItemNameFunc, 
 					return;
 				let li = document.createElement('li');
 				let innerHTML = '<button>'+listItemNumFunc(it)+' <arrow></arrow></button> ';
-				innerHTML += '<info><inline-bar style="width: '+isValidFunc(it)*4+'px">'+listItemNameFunc(it)+'</inline-bar></info><detail>'+listItemPopupFunc(it)+'</detail>';
+				innerHTML += '<info><inline-bar style="width: '+isValidFunc(it)*3+'px">'+listItemNameFunc(it)+'</inline-bar></info><detail>'+listItemPopupFunc(it)+'</detail>';
 				li.innerHTML = innerHTML;
 				// Only one item expanded at a time.
 				let button = li.getElementsByTagName('button')[0];
@@ -273,6 +273,6 @@ function MovieListView(jason){
 };
 function FooterView(){
 	var element = document.createElement('footer');
-	element.appendChild(document.createElement('small')).innerHTML = 'The data for this chart was gathered by hand -- if there are any omissions or errors, let me know: <a href="https://twitter.com/radamadah">@radamadah</a>.</br>Coded with d3.js. If you want to contribute to this thing, it\'s a public repo on Github (<a href="https://github.com/radamadah/criterion-closet-picks">https://github.com/radamadah/criterion-closet-picks</a>), and I\'ll take any good PRs! Last updated 2018-11-05.';
+	element.appendChild(document.createElement('small')).innerHTML = 'The data for this chart was gathered by hand -- if there are any omissions or errors, let me know: <a href="https://twitter.com/radamadah">@radamadah</a>.</br>Coded with d3.js. If you want to contribute to this thing, it\'s a public repo on Github (<a href="https://github.com/radamadah/criterion-closet-picks">https://github.com/radamadah/criterion-closet-picks</a>), and I\'ll take any good PRs! Last updated 2019-05-15.';
 	return element;
 }
