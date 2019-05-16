@@ -15,12 +15,14 @@ class adder:
 		switch[self.kind]()
 
 	def __country_adder(self):
+		name = input('Name: ')
 		with open('data/countries.csv', 'a') as csv:
-			csv.write('%s\n' % param)
+			csv.write('%s\n' % name)
 
 	def __director_adder(self):
+		name = input('Name: ')
 		with open('data/directors.csv', 'a') as csv:
-			csv.write('%s\n' % param)
+			csv.write('%s\n' % name)
 
 	def __movie_adder(self):
 		VALID = True
@@ -29,6 +31,8 @@ class adder:
 		spine = int(input('Spine: '))
 		# GET NAME
 		name = input('Name: ')
+		# GET YEAR
+		year = input('Year: ')
 		# GET DIRECTOR
 		directors = input('Directors: ')
 		for director in directors.split(' '):
@@ -45,8 +49,6 @@ class adder:
 			if not hasattr(getter, 'hit'):
 				errors.append('FAILURE, WRONG country')
 				VALID = False
-		# GET YEAR
-		year = input('Year: ')
 		# GET URL
 		url = input('URL: ')
 
@@ -60,6 +62,8 @@ class adder:
 							write_csv.write('%s,%s,%s,%s,%s,%s\n' % (spine,name,directors,countries,year,url))
 							wrote_movie = True
 						write_csv.write(line)
+				if wrote_movie == False:
+					write_csv.write('%s,%s,%s,%s,%s,%s\n' % (spine,name,directors,countries,year,url))
 			os.remove('data/movies.csv')
 			os.rename('data/tmp.csv', 'data/movies.csv')
 			print('---SUCCESS---')
@@ -103,11 +107,12 @@ class adder:
 		# GET MENTIONED
 		mentioned = input("mentioned: ")
 		for movie in mentioned.split(' '):
-			getter = Getter.getter('movie')
-			getter.run(int(movie))
-			if not hasattr(getter, 'hit'):
-				errors.append('FAILURE, WRONG movie')
-				VALID = False
+			if movie != '':
+				getter = Getter.getter('movie')
+				getter.run(int(movie))
+				if not hasattr(getter, 'hit'):
+					errors.append('FAILURE, WRONG movie')
+					VALID = False
 		# GET NOTES
 		notes = input("notes: ")
 
