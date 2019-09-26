@@ -1,3 +1,4 @@
 *~
 index.html
 source/__pycache__
+*.sublime-workspace
