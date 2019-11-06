@@ -273,6 +273,6 @@ function MovieListView(jason){
 };
 function FooterView(){
 	var element = document.createElement('footer');
-	element.appendChild(document.createElement('small')).innerHTML = 'The data for this chart was gathered by hand -- if there are any omissions or errors, let me know: <a href="https://twitter.com/radamadah">@radamadah</a>.</br>Coded with d3.js. If you want to contribute to this thing, it\'s a public repo on Github (<a href="https://github.com/radamadah/criterion-closet-picks">https://github.com/radamadah/criterion-closet-picks</a>), and I\'ll take any good PRs! Last updated 2019-09-25.';
+	element.appendChild(document.createElement('small')).innerHTML = 'The data for this chart was gathered by hand -- if there are any omissions or errors, let me know: <a href="https://twitter.com/radamadah">@radamadah</a>.</br>Coded with d3.js. If you want to contribute to this thing, it\'s a public repo on Github (<a href="https://github.com/radamadah/criterion-closet-picks">https://github.com/radamadah/criterion-closet-picks</a>), and I\'ll take any good PRs! Last updated 2019-11-05.';
 	return element;
 }
