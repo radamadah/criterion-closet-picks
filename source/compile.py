@@ -39,25 +39,23 @@ def generate(path):
 	if len(requested_path) > 1 and requested_path[1] not in ['index.html', '']:
 		return {'response_type': 404, 'body': 'File Not Found'}
 	# Header data
-	index_file = DOMElement('html', { 'class': 'night-mode' })
-	index_file.appendChild(DOMElement('meta', { 'charset': 'utf-8' }))
-	index_file.appendChild(DOMElement('meta', { 'name': 'theme-color', 'content': '#E9967A' }))
-	index_file.appendChild(DOMElement('meta', { 'name': 'twitter:card', 'content': 'summary' }))
-	index_file.appendChild(DOMElement('meta', { 'name': 'twitter:site', 'content': '@radamadah' }))
-	index_file.appendChild(DOMElement('meta', { 'name': 'twitter:title', 'content': 'Criterion Closet Picks Data Visualization' }))
-	index_file.appendChild(DOMElement('meta', { 'name': 'twitter:description', 'content': 'A quick graphic that shows the movie tastes of visitors to the Criterion Collection\'s DVD Closet.' }))
-	index_file.appendChild(DOMElement('meta', { 'name': 'twitter:image', 'content': 'chart.png' }))
-	index_file.appendChild(DOMElement('meta', { 'property': 'og:title', 'content': 'Criterion Closet Picks Data Visualization' }))
-	index_file.appendChild(DOMElement('meta', { 'property': 'og:description', 'content': 'A quick graphic that shows the movie tastes of visitors to the Criterion Collection\'s DVD Closet.' }))
-	index_file.appendChild(DOMElement('meta', { 'property': 'og:type', 'content': 'website' }))
-	index_file.appendChild(DOMElement('meta', { 'property': 'og:url', 'content': 'http://adamhadar.me/things/criterion-closet-picks/' }))
-	index_file.appendChild(DOMElement('meta', { 'property': 'og:image', 'content': 'http://adamhadar.me/things/criterion-closet-picks/chart.png' }))
-	index_file.appendChild(DOMElement('title').appendChild(DOMString('Criterion Closet Picks Data Viz')))
+	index_file = DOMElement('html')
+
+	head = index_file.appendChild(DOMElement('head'))
+	head.appendChild(DOMElement('link', { 'rel': 'stylesheet', 'type': 'text/css', 'href': 'http://adamhadar.me/style2.css' }))
+
+	body = index_file.appendChild(DOMElement('body'))
+
+	header = body.appendChild(DOMElement('header'))
+	h1 = header.appendChild(DOMElement('h1').appendChild(DOMString('Criterion Closet Picks Visualization')))
+
+	main = body.appendChild(DOMElement('main'))
+
 	# Stylesheet
 	with open('source/style.css') as f:
-		index_file.appendChild(DOMElement('style').appendChild(DOMString(f.read())))
+		main.appendChild(DOMElement('style').appendChild(DOMString(f.read())))
 	# Scripts
-	index_file.appendChild( DOMElement('script', { 'src': 'https://d3js.org/d3.v4.min.js' }) )
+	# main.appendChild( DOMElement('script', { 'src': 'https://d3js.org/d3.v4.min.js' }) )
 	visitsObj = ''
 	moviesObj = ''
 	countriesObj = ''
@@ -98,8 +96,8 @@ def generate(path):
 		for line in csv:
 			directors.append('{name: "'+line.rstrip()+'"}')
 		directorsObj = '['+','.join(directors)+']'
-	index_file.appendChild( DOMElement('script').appendChild(DOMString('document.addEventListener("DOMContentLoaded", function(){ run({visits: '+visitsObj+', countries: '+countriesObj+', directors: '+directorsObj+', movies: '+moviesObj+'}); });')) )
+	main.appendChild( DOMElement('script').appendChild(DOMString('document.addEventListener("DOMContentLoaded", function(){ run({visits: '+visitsObj+', countries: '+countriesObj+', directors: '+directorsObj+', movies: '+moviesObj+'}); });')) )
 	with open('source/script.js') as f:
-		index_file.appendChild( DOMElement('script').appendChild(DOMString(f.read())) )
-	# index_file += '</html>'
+		main.appendChild( DOMElement('script').appendChild(DOMString(f.read())) )
+
 	return {'response_type': 200, 'body': '<!DOCTYPE html>'+index_file.write() }
