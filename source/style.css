@@ -1,77 +1,22 @@
-.bagged {
-	fill: darkcyan;
-	color: darkcyan;
-}
-cite.bagged {
-	border-bottom: 2px solid darkcyan;
-	color: inherit;
-}
-box.bagged {
-	background-color: darkcyan;
-}
-.mentioned {
-	fill: mediumvioletred;
-	color: mediumvioletred;
-}
-cite.mentioned {
-	border-bottom: 2px solid mediumvioletred;
-	color: inherit;
-}
-box.mentioned {
-	background-color: mediumvioletred;
-}
-.interactive {
-	font-weight: bold;
-	color: orange;
-}
-html {
-	background-color: #fefefe;
-	color: #111;
-	fill: #111;
-	font-family: sans-serif;
-}
-body {
-	margin: auto;
-	font-size: 20px;
-}
-a {
-	color: royalblue;
-}
 button {
-	background-color: #ccc;
-	color: black;
-	border-color: #666;
-	cursor: pointer;
-	text-align: right;
 	width: 100px;
 	height: 28px;
-	vertical-align: top;
-	border: 0;
-	border-radius: 5px;
-}
-button.active {
-	background-color: orange;
-	color: #222;
-}
-h2 small {
-	font-size: 16px;
 }
 h2 button {
-	text-align: center;
-	width: auto;
-	border-radius: 3px;
-	vertical-align: initial;
+	border-radius: 5px 5px 0 0;
+}
+ol button {
+	text-align: right;
 }
 info {
 	display: inline-block;
 }
 inline-bar {
-	background-color: salmon;
+	background-color: var(--highlight-color, darksalmon);
 	display: inline-block;
 	white-space: nowrap;
 }
 chart {
-	margin-left: -2em;
 	margin-top: -30px;
 	display: block;
 }
@@ -85,15 +30,13 @@ chart > svg {
 chart > div {
 	overflow-x: scroll;
 }
-chart > legend {
-	background-color: #eee;
-    display: block;
-    width: 200px;
-    height: 75px;
-    position: absolute;
-    margin-left: 70%;
-    margin-top: -540px;
-    padding: 8px;
+legend {
+	background-color: var(--script-background-color, #eee);
+	display: block;
+	width: 200px;
+	height: 75px;
+	margin: 0 0 -88px auto;
+	padding: 8px;
 	border-radius: 5px;
 }
 legend box {
@@ -102,65 +45,38 @@ legend box {
 	height: 16px;
 	margin-right: 4px;
 }
-.axis {
-	shape-rendering: crispEdges;
-	font-size: 10px;
-}
-.axis text {
-	margin-left: 10px;
-}
 analysis, data {
-	display: inline-block;
-	vertical-align: top;
-}
-analysis {
+	display: block;
 	width: 100%;
 }
-data {
-	display: inline-block;
-	width: 49.8%;
-	vertical-align: top;
-}
 ol {
-	background-color: aliceblue;
+	background-color: var(--script-background-color, #eee);
 	list-style-type: none;
 	padding-left: 0;
 	height: 500px;
 	overflow-y: auto;
 	width: 95%;
 }
-ol, li, inline-bar {
-	font-size: 22px;
-}
 arrow {
-	border-top-color: white;
 	display: inline-block;
 	width: 0;
 	height: 0;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
-	border-top: 5px solid black;
+	border-top: 5px solid var(--text-color, black);
 	padding-bottom: 2px;
 }
 detail {
 	display: block;
 	padding: 8px;
 	margin-left: 65px;
-	font-size: 18px;
 }
-
 @media (max-width: 1399px) {
-	body{
-		width: 90%;
-	}
 	chart {
 		width: 100%;
 	}
 	chart > div {
 		width: 94%;
-	}
-	analysis, data {
-		width: 100%;
 	}
 }
 @media(max-width: 720px){
@@ -170,30 +86,27 @@ detail {
 	chart > svg {
 		width: 6%;
 	}
-	legend {
-		margin-left: initial;
-		right: 0;
-	}
-	detail {
-		font-size: 12px;
-	}
 }
 @media (min-width: 1400px){
-	body{
-		width: 70em;
-	}
 	chart {
+		margin-left: -10em;
 		width: 72em;
 	}
 	chart > div {
 		width: 70em;
-	}
-	data {
-		width: 49.8%;
 	}
 }
 @media (min-width: 1601px){
 	chart > div {
 		overflow-x: auto;
 	}
+}
+
+svg path.domain, svg g.tick line {
+	stroke: var(--text-color, black);
+	shape-rendering: crispEdges;
+}
+svg g.tick text {
+	fill: var(--text-color, black);
+	shape-rendering: crispEdges;
 }
