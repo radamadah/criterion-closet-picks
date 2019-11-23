@@ -21,12 +21,13 @@ inline-bar {
 	display: grid;
 	grid-template-columns: 3fr 1fr;
 	grid-column-gap: 10px;
-	height: 120px;
+	margin: 8px 0;
 }
 .chart-helper > * {
 	background-color: var(--script-background-color, #eee);
 	padding: 8px;
 	border-radius: 5px;
+	min-height: 120px;
 }
 .legend box {
 	display: inline-block;
@@ -49,6 +50,11 @@ chart > svg {
 chart > div {
 	overflow-x: scroll;
 }
+
+p .active {
+	font-weight: bold;
+}
+
 ol {
 	background-color: var(--script-background-color, #eee);
 	list-style-type: none;
@@ -83,11 +89,22 @@ ol detail {
 	}
 }
 @media(max-width: 720px){
-	chart {
+	/*chart {
 		margin-left: -6%;
 	}
 	chart > svg {
 		width: 6%;
+	}*/
+
+	.chart-helper {
+		grid-template-columns: 1fr;
+		grid-column-gap: 0;
+		grid-row-gap: 10px;
+	}
+
+	h2 small span {
+		display: block;
+		text-align: right;
 	}
 }
 @media (min-width: 1400px){

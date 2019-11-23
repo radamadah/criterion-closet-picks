@@ -1,6 +1,30 @@
 function DOM(){var i=function(_,v){return v===typeof _},s=null,o=function(_){return!i(_,'undefined')&&s!==_},g='insertBefore',r=function(_,v){return o(_)&&i(o(v)?v:_[g],'function')},a=arguments,m=a[0],t=a.length,e=1<t&&r(a[1])?a[1]:s,n=2<t&&r(a[2])?a[2]:s,y=a[t-1];return 0<t&&5>t&&o(m)&&i(m,'string')?m=document.createElement(m):s,r(m)?((1<t&&r(y,y)?y(m):s),(o(e)?e[g](m,n):s),m):s;}
 function DOMText(a){return document.createTextNode(a);}
 
+function popularSet(list, comparator){
+	let popular = [];
+	let count = 0;
+	list.forEach(function(el){
+		if(comparator(el) > count){
+			popular = [el];
+			count = comparator(el);
+		}
+		else if(comparator(el) == count)
+			popular.push(el);
+	});
+	return { popular: popular, value: count };
+}
+function prettyList(list){
+	if(list.length == 0)
+		return '';
+	else if(list.length == 1)
+		return list[0];
+	else
+		return list.slice(0,-1).join(', ')+' and '+list[list.length-1];
+}
+function comparAttr(a,b,c){ return a[c] > b[c]? 1 : b[c] > a[c]? -1 : 0; }
+function comparArray(a,b,c){ return a[c].length > b[c].length? 1 : b[c].length > a[c].length? -1 : 0; }
+
 function run(jason){
 	var main = document.getElementsByTagName('main')[0];
 	var jason = preprocessData(jason);
@@ -17,7 +41,10 @@ function ListView(main, items, title, isValidFunc, listItemNumFunc, listItemName
 	let sortButtonsContainer = null;
 	DOM('h2', main, h2 => {
 		DOM(DOMText(title + ' '), h2)
-		sortButtonsContainer = DOM('small', h2, small => small.innerHTML = 'sort by ')
+		DOM('small', h2, small => {
+			small.innerHTML = 'sort by '
+			sortButtonsContainer = DOM('span', small)
+		})
 	})
 	let DOMList = DOM('ol', main)
 	var DOMDetails = DOMList.getElementsByTagName('detail');
@@ -67,29 +94,6 @@ function ListView(main, items, title, isValidFunc, listItemNumFunc, listItemName
 	});
 	sorts[0]();
 }
-function popularSet(list, comparator){
-	let popular = [];
-	let count = 0;
-	list.forEach(function(el){
-		if(comparator(el) > count){
-			popular = [el];
-			count = comparator(el);
-		}
-		else if(comparator(el) == count)
-			popular.push(el);
-	});
-	return { popular: popular, value: count };
-}
-function prettyList(list){
-	if(list.length == 0)
-		return '';
-	else if(list.length == 1)
-		return list[0];
-	else
-		return list.slice(0,-1).join(', ')+' and '+list[list.length-1];
-}
-function comparAttr(a,b,c){ return a[c] > b[c]? 1 : b[c] > a[c]? -1 : 0; }
-function comparArray(a,b,c){ return a[c].length > b[c].length? 1 : b[c].length > a[c].length? -1 : 0; }
 function preprocessData(jason){
 	window.margin = {top: 30, right: 30, bottom: 30, left: 40};
 	window.SPINE_COUNT = 1100;
