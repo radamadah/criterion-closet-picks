@@ -110,8 +110,11 @@ def generate_index():
 
 	body = index_file.appendChild(DOMElement('body'))
 
-	header = body.appendChild(DOMElement('header'))
+	header = DOMElement('header')
+	body.appendChild(header)
 	header.appendChild(DOMElement('h1').appendChild(DOMString('Criterion Closet Picks Visualization')))
+	header.appendChild(DOMElement('address').appendChild(DOMString('By <a href="./">Adam Nogueira Hadar</a>')))
+	header.appendChild(DOMElement('published-at').appendChild(DOMString('Published on EXAMPLE DATE')))
 
 	main = body.appendChild(DOMElement('main'))
 
