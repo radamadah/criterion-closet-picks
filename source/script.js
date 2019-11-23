@@ -13,61 +13,59 @@ function run(jason){
 	VisitListView(jason, main);
 	MovieListView(jason, main);
 }
-function ListView(parent, items, title, isValidFunc, listItemNumFunc, listItemNameFunc, listItemPopupFunc, sortFuncMap){
-	DOM('data', parent, (data) => {
-		let sortButtonsContainer = null;
-		DOM('h2', data, (h2) => {
-			DOM(DOMText(title + ' '), h2)
-			sortButtonsContainer = DOM('small', h2, small => small.innerHTML = 'sort by ')
-		})
-		let DOMList = DOM('ol', data)
-		var DOMDetails = DOMList.getElementsByTagName('detail');
-		var DOMButtons = DOMList.getElementsByTagName('button');
-		let DOMSortButtons = sortButtonsContainer.getElementsByTagName('button');
-		var sorts = [];
-		Object.keys(sortFuncMap).forEach(function(key){
-			DOM('button', sortButtonsContainer, sortButton => {
-				sortButton.innerHTML = key;
-				let sort = function(){
-					DOMList.innerHTML = '';
-					items.sort(sortFuncMap[key]);
-					items.forEach(function(it){
-						if(isValidFunc(it) == 0)
-							return;
-						DOM('li', DOMList, li => {
-							let innerHTML = '<button>'+listItemNumFunc(it)+' <arrow></arrow></button> ';
-							innerHTML += '<info><inline-bar style="width: '+isValidFunc(it)*3+'px">'+listItemNameFunc(it)+'</inline-bar></info><detail>'+listItemPopupFunc(it)+'</detail>';
-							li.innerHTML = innerHTML;
-							// Only one item expanded at a time.
-							let button = li.getElementsByTagName('button')[0];
-							let detail = li.getElementsByTagName('detail')[0];
-							detail.style.display = 'none';
-							button.addEventListener('click', function(){
-								if(detail.style.display == 'none'){
-									for(var i = 0; i < DOMDetails.length; ++i){
-										DOMDetails[i].style.display = 'none';
-										DOMButtons[i].classList = '';
-									}
-									detail.style.display = 'block';
-									button.classList = 'active';
-								}
-								else {
-									detail.style.display = 'none';
-									button.classList = '';
-								}
-							});
-						})
-					});
-					for(let i = 0; i < DOMSortButtons.length; ++i)
-						DOMSortButtons[i].classList = '';
-					sortButton.classList = 'active';
-				};
-				sorts.push(sort);
-				sortButton.addEventListener('click', sort);
-			})
-		});
-		sorts[0]();
+function ListView(main, items, title, isValidFunc, listItemNumFunc, listItemNameFunc, listItemPopupFunc, sortFuncMap){
+	let sortButtonsContainer = null;
+	DOM('h2', main, h2 => {
+		DOM(DOMText(title + ' '), h2)
+		sortButtonsContainer = DOM('small', h2, small => small.innerHTML = 'sort by ')
 	})
+	let DOMList = DOM('ol', main)
+	var DOMDetails = DOMList.getElementsByTagName('detail');
+	var DOMButtons = DOMList.getElementsByTagName('button');
+	let DOMSortButtons = sortButtonsContainer.getElementsByTagName('button');
+	var sorts = [];
+	Object.keys(sortFuncMap).forEach(function(key){
+		DOM('button', sortButtonsContainer, sortButton => {
+			sortButton.innerHTML = key;
+			let sort = function(){
+				DOMList.innerHTML = '';
+				items.sort(sortFuncMap[key]);
+				items.forEach(function(it){
+					if(isValidFunc(it) == 0)
+						return;
+					DOM('li', DOMList, li => {
+						let innerHTML = '<button>'+listItemNumFunc(it)+' <arrow></arrow></button> ';
+						innerHTML += '<info><inline-bar style="width: '+isValidFunc(it)*3+'px">'+listItemNameFunc(it)+'</inline-bar></info><detail>'+listItemPopupFunc(it)+'</detail>';
+						li.innerHTML = innerHTML;
+						// Only one item expanded at a time.
+						let button = li.getElementsByTagName('button')[0];
+						let detail = li.getElementsByTagName('detail')[0];
+						detail.style.display = 'none';
+						button.addEventListener('click', function(){
+							if(detail.style.display == 'none'){
+								for(var i = 0; i < DOMDetails.length; ++i){
+									DOMDetails[i].style.display = 'none';
+									DOMButtons[i].classList = '';
+								}
+								detail.style.display = 'block';
+								button.classList = 'active';
+							}
+							else {
+								detail.style.display = 'none';
+								button.classList = '';
+							}
+						});
+					})
+				});
+				for(let i = 0; i < DOMSortButtons.length; ++i)
+					DOMSortButtons[i].classList = '';
+				sortButton.classList = 'active';
+			};
+			sorts.push(sort);
+			sortButton.addEventListener('click', sort);
+		})
+	});
+	sorts[0]();
 }
 function popularSet(list, comparator){
 	let popular = [];
@@ -230,7 +228,7 @@ function ChartView(jason, parent){
 		})
 	})
 }
-function OverView(jason, parent){
+function OverView(jason, main){
 	let movies = popularSet(jason.movie_list, function(m){ return m.length });
 	let directors = popularSet(jason.directors, function(d){ return d.movies.length });
 	let countries = popularSet(jason.countries, function(c){ return c.movies.length });
@@ -247,27 +245,25 @@ function OverView(jason, parent){
 		countries_list: prettyList(countries.popular.map(function(c){ return '<span class="active">'+c.name+'</span>' })),
 		each: (countries.popular.length > 1) ? ' each' : ''
 	};
-	DOM('analysis', parent, (analysis) => {
-		DOM('p', analysis, (p) => {
-			p.innerHTML = 'The aim of this page is to easily visualize the movie tastes of the various visitors of the <a href="https://www.criterion.com/">Criterion Collection</a>\'s closet, as seen in <a href="https://www.youtube.com/playlist?list=PLFk8lnn1nEEID1NNh7vCZuU5Y4r2YrheR">this video series</a>. The chart above shows each movie picked, in Criterion spine # order, against the number of times they were picked, while the interactive lists below expose the dataset.';
-		})
-		DOM('p', analysis, (p) => {
-			p.innerHTML = 'There have been <span class="active">'+jason.stats.visitsCount+'</span> visits to the Criterion closet, from which <span class="active">'+jason.stats.moviesCount+'</span> unique films by <span class="active">'+jason.stats.directorsCount+'</span> unique directors in <span class="active">'+jason.stats.countriesCount+'</span> unique countries have been picked up/discussed.';
-		})
-		DOM('p', analysis, (p) => {
-			p.innerHTML = i18n.movies_list+' '+i18n.movies_be+' the most popular '+i18n.movies_count+' among closet visitors, with <span class="active">'+movies.value+'</span> baggings/mentions'+i18n.apiece+'.';
-		})
-		DOM('p', analysis, (p) => {
-			p.innerHTML = i18n.directors_list+' '+i18n.directors_be+' the most popular '+i18n.director+', with <span class="active">'+directors.value+'</span> baggings/mentions.';
-		})
-		DOM('p', analysis, (p) => {
-			p.innerHTML = 'The '+i18n.country+' from which the most movies are bagged/mentioned '+i18n.countries_be+' '+i18n.countries_list+' (<span class="active">'+countries.value+'</span> movies'+i18n.each+').';
-		})
-	});
+	DOM('p', main, p => {
+		p.innerHTML = 'The aim of this page is to easily visualize the movie tastes of the various visitors of the <a href="https://www.criterion.com/">Criterion Collection</a>\'s closet, as seen in <a href="https://www.youtube.com/playlist?list=PLFk8lnn1nEEID1NNh7vCZuU5Y4r2YrheR">this video series</a>. The chart above shows each movie picked, in Criterion spine # order, against the number of times they were picked, while the interactive lists below expose the dataset.';
+	})
+	DOM('p', main, p => {
+		p.innerHTML = 'There have been <span class="active">'+jason.stats.visitsCount+'</span> visits to the Criterion closet, from which <span class="active">'+jason.stats.moviesCount+'</span> unique films by <span class="active">'+jason.stats.directorsCount+'</span> unique directors in <span class="active">'+jason.stats.countriesCount+'</span> unique countries have been picked up/discussed.';
+	})
+	DOM('p', main, p => {
+		p.innerHTML = i18n.movies_list+' '+i18n.movies_be+' the most popular '+i18n.movies_count+' among closet visitors, with <span class="active">'+movies.value+'</span> baggings/mentions'+i18n.apiece+'.';
+	})
+	DOM('p', main, p => {
+		p.innerHTML = i18n.directors_list+' '+i18n.directors_be+' the most popular '+i18n.director+', with <span class="active">'+directors.value+'</span> baggings/mentions.';
+	})
+	DOM('p', main, p => {
+		p.innerHTML = 'The '+i18n.country+' from which the most movies are bagged/mentioned '+i18n.countries_be+' '+i18n.countries_list+' (<span class="active">'+countries.value+'</span> movies'+i18n.each+').';
+	})
 }
-function DirectorListView(jason, parent){
+function DirectorListView(jason, main){
 	return ListView(
-		parent,
+		main,
 		jason.directors,
 		'Director List',
 		function(it){ return it.movies.length },
@@ -280,9 +276,9 @@ function DirectorListView(jason, parent){
 		}
 	);
 }
-function CountryListView(jason, parent){
+function CountryListView(jason, main){
 	return ListView(
-		parent,
+		main,
 		jason.countries,
 		'Country List',
 		function(it){ return it.movies.length },
@@ -295,9 +291,9 @@ function CountryListView(jason, parent){
 		}
 	)
 }
-function VisitListView(jason, parent){
+function VisitListView(jason, main){
 	return ListView(
-		parent,
+		main,
 		jason.visit_list,
 		'Visit List',
 		function(it){ return it.all_movies.length },
@@ -311,9 +307,9 @@ function VisitListView(jason, parent){
 		}
 	)
 }
-function MovieListView(jason, parent){
+function MovieListView(jason, main){
 	return ListView(
-		parent,
+		main,
 		jason.movie_list,
 		'Movie List',
 		function(it){ return it.visitors.length },

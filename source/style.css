@@ -45,17 +45,14 @@ legend box {
 	height: 16px;
 	margin-right: 4px;
 }
-analysis, data {
-	display: block;
-	width: 100%;
-}
 ol {
 	background-color: var(--script-background-color, #eee);
 	list-style-type: none;
 	padding-left: 0;
+	margin-left: 1.2em;
 	height: 500px;
 	overflow-y: auto;
-	width: 95%;
+	width: calc(100% - 1.2em);
 }
 arrow {
 	display: inline-block;
