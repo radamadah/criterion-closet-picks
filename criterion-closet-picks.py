@@ -11,14 +11,26 @@ class server(BaseHTTPRequestHandler):
 	def do_GET(self):
 		document = {}
 		requested_path = self.path.split('/')
-		if len(requested_path) > 1 and requested_path[1] not in ['index.html', '']:
-			document = {'response_type': 404, 'body': 'File Not Found'}
+		if len(requested_path) > 1 and requested_path[1] not in ['index.html', 'script.js', 'style.css', '']:
+			self.send_response(404)
+			self.send_header('Content-type', 'text/html')
+			self.end_headers()
+			self.wfile.write(bytes('File Not Found', 'utf-8'))
+		elif requested_path[1] == 'script.js':
+			self.send_response(200)
+			self.send_header('Content-type', 'text/javascript')
+			self.end_headers()
+			self.wfile.write(bytes(compile.get_javascript(), 'utf-8'))
+		elif requested_path[1] == 'style.css':
+			self.send_response(200)
+			self.send_header('Content-type', 'text/css')
+			self.end_headers()
+			self.wfile.write(bytes(compile.get_stylesheet(), 'utf-8'))
 		else:
-			document = compile.generate_full()
-		self.send_response(document['response_type'])
-		self.send_header('Content-type', 'text/html')
-		self.end_headers()
-		self.wfile.write(bytes(document['body'], 'utf-8'))
+			self.send_response(200)
+			self.send_header('Content-type', 'text/html')
+			self.end_headers()
+			self.wfile.write(bytes(compile.generate_index(), 'utf-8'))
 
 if __name__ == '__main__':
 	from sys import argv

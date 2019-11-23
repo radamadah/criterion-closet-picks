@@ -34,11 +34,14 @@ class DOMElement:
 			element += f'</{self.name}>'
 		return element
 
-def generate_stylesheet():
-	stylesheet = DOMString('')
+def get_stylesheet():
+	stylesheet = ''
 	with open('source/style.css') as f:
-		stylesheet = DOMElement('style').appendChild(DOMString(f.read()))
+		stylesheet = f.read()
 	return stylesheet
+
+def generate_stylesheet():
+	return DOMElement('style').appendChild(DOMString(get_stylesheet()))
 
 def generate_json():
 	visitsObj = ''
@@ -83,21 +86,27 @@ def generate_json():
 		directorsObj = '['+','.join(directors)+']'
 	return DOMElement('script').appendChild(DOMString('document.addEventListener("DOMContentLoaded", function(){ run({visits: '+visitsObj+', countries: '+countriesObj+', directors: '+directorsObj+', movies: '+moviesObj+'}); });'))
 
-def generate_javascript():
-	javascript = DOMString('')
+def get_javascript():
+	js = ''
 	with open('source/script.js') as f:
-		javascript = DOMElement('script').appendChild(DOMString(f.read()))
-	return javascript
+		js = f.read()
+	return js
+
+def generate_javascript():
+	return DOMElement('script').appendChild(DOMString(get_javascript()))
 
 def generate_stub():
 	return generate_stylesheet().write()+generate_json().write()+generate_javascript().write()
 
-def generate_full():
+def generate_index():
 	index_file = DOMElement('html')
 
 	head = index_file.appendChild(DOMElement('head'))
 	head.appendChild(DOMElement('meta', { 'charset': 'utf-8' }))
 	head.appendChild(DOMElement('link', { 'rel': 'stylesheet', 'type': 'text/css', 'href': 'http://adamhadar.me/static/style.css' }))
+	head.appendChild(DOMElement('link', { 'rel': 'stylesheet', 'type': 'text/css', 'href': 'style.css' }))
+	head.appendChild(DOMElement('script', { 'type': 'text/javascript', 'src': 'script.js' }))
+	head.appendChild(generate_json())
 
 	body = index_file.appendChild(DOMElement('body'))
 
@@ -105,8 +114,5 @@ def generate_full():
 	header.appendChild(DOMElement('h1').appendChild(DOMString('Criterion Closet Picks Visualization')))
 
 	main = body.appendChild(DOMElement('main'))
-	main.appendChild(generate_stylesheet())
-	main.appendChild(generate_json())
-	main.appendChild(generate_javascript())
 
-	return {'response_type': 200, 'body': '<!DOCTYPE html>'+index_file.write() }
+	return '<!DOCTYPE html>'+index_file.write()
