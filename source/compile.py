@@ -42,7 +42,7 @@ def generate(path):
 	index_file = DOMElement('html')
 
 	head = index_file.appendChild(DOMElement('head'))
-	head.appendChild(DOMElement('link', { 'rel': 'stylesheet', 'type': 'text/css', 'href': 'http://adamhadar.me/style2.css' }))
+	head.appendChild(DOMElement('link', { 'rel': 'stylesheet', 'type': 'text/css', 'href': 'http://adamhadar.me/static/style.css' }))
 
 	body = index_file.appendChild(DOMElement('body'))
 
@@ -55,7 +55,6 @@ def generate(path):
 	with open('source/style.css') as f:
 		main.appendChild(DOMElement('style').appendChild(DOMString(f.read())))
 	# Scripts
-	# main.appendChild( DOMElement('script', { 'src': 'https://d3js.org/d3.v4.min.js' }) )
 	visitsObj = ''
 	moviesObj = ''
 	countriesObj = ''
