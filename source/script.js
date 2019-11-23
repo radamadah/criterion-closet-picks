@@ -5,8 +5,8 @@ function run(jason){
 	var main = document.getElementsByTagName('main')[0];
 	var jason = preprocessData(jason);
 
-	LegendView(main);
 	ChartView(jason, main);
+	LegendView(jason, main);
 	OverView(jason, main);
 	DirectorListView(jason, main);
 	CountryListView(jason, main);
@@ -94,7 +94,7 @@ function preprocessData(jason){
 	window.margin = {top: 30, right: 30, bottom: 30, left: 40};
 	window.SPINE_COUNT = 1100;
 	window.VISIT_COUNT = Math.ceil(Math.sqrt(Object.keys(jason.visits).length)) + 2;
-	window.width = SPINE_COUNT*1.3 - margin.left - margin.right;
+	window.width = SPINE_COUNT*2 - margin.left - margin.right;
 	window.height = 600 - margin.top - margin.bottom;
 	window.bin_width = width/SPINE_COUNT;
 	window.bin_height = height/VISIT_COUNT;
@@ -156,16 +156,32 @@ function preprocessData(jason){
 	});
 	return jason;
 }
-function LegendView(parent){
-	DOM('legend', parent, (legend) => {
-		DOM('strong', legend, strong => strong.innerHTML = 'Legend')
-		DOM('div', legend, (div) => {
-			DOM('box', div, box => box.classList = 'data1-background')
-			DOM(DOMText('movies bagged'), div)
-		});
-		DOM('div', legend, (div) => {
-			DOM('box', div, box => box.classList = 'data2-background')
-			DOM(DOMText('movies mentioned'), div)
+var barOnHover = null;
+function LegendView(jason, main){
+	barOnHover = function(spine) {
+		let movie = jason.movies[spine]
+		let barInfo = document.getElementsByClassName('bar-info')[0]
+		barInfo.innerHTML = '#'+movie.spine_number+': <cite>'+movie.title+'</cite>. '+
+			'Directed by '+prettyList(movie.directors.map(function(d){return d.name}))+'. '+movie.year+'. <a href="https://criterion.com/films/'+movie.url+'">Criterion link</a>.<br/>'+ prettyList(movie.visitors.map(function(v){ return '<cite class="'+(v.spines_bagged.indexOf(movie.spine_number)==-1?'data2':'data1')+'"><a href="https://youtu.be/'+v.url+'">'+v.visitor+'</a></cite>' }))+'.'
+	}
+
+	DOM('div', main, div => {
+		div.setAttribute('class', 'chart-helper')
+		DOM('detail', div, barInfo => {
+			barInfo.setAttribute('class', 'bar-info')
+		})
+		DOM('div', div, (legend) => {
+			legend.setAttribute('class', 'legend')
+			DOM('strong', legend, strong => strong.innerHTML = 'Legend')
+			DOM('div', legend, (div) => {
+				DOM('box', div, box => box.classList = 'data1-background')
+				DOM(DOMText('movies bagged'), div)
+			});
+			DOM('div', legend, (div) => {
+				DOM('box', div, box => box.classList = 'data2-background')
+				DOM(DOMText('movies mentioned'), div)
+			})
+			DOM('div', legend, text => text.innerHTML = 'Hover over bars for more info')
 		})
 	})
 }
@@ -206,7 +222,7 @@ function ChartView(jason, parent){
 
 		jason.movie_list.forEach((movie) => {
 			bars += ''+
-			'<g id="bar-'+movie.spine_number+'" class="bar" transform="translate('+movie.x0+','+(height-movie.length*bin_height)+')">'+
+			'<g id="bar-'+movie.spine_number+'" class="bar" transform="translate('+movie.x0+','+(height-movie.length*bin_height)+')" onmouseover="barOnHover('+movie.spine_number+',\''+movie.title+'\')">'+
 			'<rect class="data2" transform="translate(0,0)" width="'+bin_width+'" height="'+(movie.mentioned*bin_height)+'"></rect>'+
 			'<rect class="data1" transform="translate(0,'+(movie.mentioned*bin_height)+')" width="'+bin_width+'" height="'+(movie.bagged*bin_height)+'"></rect>'+
 			
