@@ -34,27 +34,13 @@ class DOMElement:
 			element += f'</{self.name}>'
 		return element
 
-def generate(path):
-	requested_path = path.split('/')
-	if len(requested_path) > 1 and requested_path[1] not in ['index.html', '']:
-		return {'response_type': 404, 'body': 'File Not Found'}
-	# Header data
-	index_file = DOMElement('html')
-
-	head = index_file.appendChild(DOMElement('head'))
-	head.appendChild(DOMElement('link', { 'rel': 'stylesheet', 'type': 'text/css', 'href': 'http://adamhadar.me/static/style.css' }))
-
-	body = index_file.appendChild(DOMElement('body'))
-
-	header = body.appendChild(DOMElement('header'))
-	h1 = header.appendChild(DOMElement('h1').appendChild(DOMString('Criterion Closet Picks Visualization')))
-
-	main = body.appendChild(DOMElement('main'))
-
-	# Stylesheet
+def generate_stylesheet():
+	stylesheet = DOMString('')
 	with open('source/style.css') as f:
-		main.appendChild(DOMElement('style').appendChild(DOMString(f.read())))
-	# Scripts
+		stylesheet = DOMElement('style').appendChild(DOMString(f.read()))
+	return stylesheet
+
+def generate_json():
 	visitsObj = ''
 	moviesObj = ''
 	countriesObj = ''
@@ -95,8 +81,32 @@ def generate(path):
 		for line in csv:
 			directors.append('{name: "'+line.rstrip()+'"}')
 		directorsObj = '['+','.join(directors)+']'
-	main.appendChild( DOMElement('script').appendChild(DOMString('document.addEventListener("DOMContentLoaded", function(){ run({visits: '+visitsObj+', countries: '+countriesObj+', directors: '+directorsObj+', movies: '+moviesObj+'}); });')) )
+	return DOMElement('script').appendChild(DOMString('document.addEventListener("DOMContentLoaded", function(){ run({visits: '+visitsObj+', countries: '+countriesObj+', directors: '+directorsObj+', movies: '+moviesObj+'}); });'))
+
+def generate_javascript():
+	javascript = DOMString('')
 	with open('source/script.js') as f:
-		main.appendChild( DOMElement('script').appendChild(DOMString(f.read())) )
+		javascript = DOMElement('script').appendChild(DOMString(f.read()))
+	return javascript
+
+def generate_stub():
+	return generate_stylesheet().write()+generate_json().write()+generate_javascript().write()
+
+def generate_full():
+	index_file = DOMElement('html')
+
+	head = index_file.appendChild(DOMElement('head'))
+	head.appendChild(DOMElement('meta', { 'charset': 'utf-8' }))
+	head.appendChild(DOMElement('link', { 'rel': 'stylesheet', 'type': 'text/css', 'href': 'http://adamhadar.me/static/style.css' }))
+
+	body = index_file.appendChild(DOMElement('body'))
+
+	header = body.appendChild(DOMElement('header'))
+	header.appendChild(DOMElement('h1').appendChild(DOMString('Criterion Closet Picks Visualization')))
+
+	main = body.appendChild(DOMElement('main'))
+	main.appendChild(generate_stylesheet())
+	main.appendChild(generate_json())
+	main.appendChild(generate_javascript())
 
 	return {'response_type': 200, 'body': '<!DOCTYPE html>'+index_file.write() }

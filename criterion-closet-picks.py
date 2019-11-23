@@ -9,7 +9,12 @@ import source.adder as Adder
 
 class server(BaseHTTPRequestHandler):
 	def do_GET(self):
-		document = compile.generate(self.path)
+		document = {}
+		requested_path = self.path.split('/')
+		if len(requested_path) > 1 and requested_path[1] not in ['index.html', '']:
+			document = {'response_type': 404, 'body': 'File Not Found'}
+		else:
+			document = compile.generate_full()
 		self.send_response(document['response_type'])
 		self.send_header('Content-type', 'text/html')
 		self.end_headers()
@@ -20,7 +25,7 @@ if __name__ == '__main__':
 
 	if argv[1] == 'build':
 		with open('index.html', 'w') as f:
-			f.write(compile.generate('/index.html')['body'])
+			f.write(compile.generate_stub())
 
 	elif argv[1] == 'host':
 		HTTPServer(('127.0.0.1', 1540), server).serve_forever()

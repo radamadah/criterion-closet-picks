@@ -4,6 +4,82 @@
 		"selected_items":
 		[
 			[
+				"spine",
+				"spine_number"
+			],
+			[
+				"bi",
+				"bin_width"
+			],
+			[
+				"bin",
+				"bin_height"
+			],
+			[
+				"tra",
+				"translate"
+			],
+			[
+				"trans",
+				"translate"
+			],
+			[
+				"tran",
+				"transform"
+			],
+			[
+				"in",
+				"innerHTML"
+			],
+			[
+				"xAx",
+				"xAxisMax"
+			],
+			[
+				"xA",
+				"xAxisTicks"
+			],
+			[
+				"text",
+				"text-anchor"
+			],
+			[
+				"tr",
+				"transform"
+			],
+			[
+				"sv",
+				"svg1Gs"
+			],
+			[
+				"sortBut",
+				"sortButtonsContainer"
+			],
+			[
+				"Leg",
+				"LegendView"
+			],
+			[
+				"get",
+				"getElementsByTagName"
+			],
+			[
+				"style",
+				"Stylesheet"
+			],
+			[
+				"DOM",
+				"DOMString"
+			],
+			[
+				"Lge",
+				"LegendView"
+			],
+			[
+				"inde",
+				"index_file"
+			],
+			[
 				"direc",
 				"director"
 			],
@@ -56,37 +132,38 @@
 	"buffers":
 	[
 		{
+			"file": "source/compile.py",
+			"settings":
+			{
+				"buffer_size": 3258,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/style.css",
+			"settings":
+			{
+				"buffer_size": 1720,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "criterion-closet-picks.py",
 			"settings":
 			{
-				"buffer_size": 1305,
+				"buffer_size": 1010,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/script.js",
+			"settings":
+			{
+				"buffer_size": 14191,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/getter.py",
-			"settings":
-			{
-				"buffer_size": 9644,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 3365,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "data/visits.csv",
-			"settings":
-			{
-				"buffer_size": 11810,
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -138,12 +215,15 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/adamhadar/Documents/programming/criterion-closet-picks",
-		"/Users/adamhadar/Documents/programming/criterion-closet-picks/data",
-		"/Users/adamhadar/Documents/programming/criterion-closet-picks/source"
+		"/C/nogueira/web-projects/criterion-closet-picks",
+		"/C/nogueira/web-projects/criterion-closet-picks/source"
 	],
 	"file_history":
 	[
+		"/C/nogueira/web-projects/criterion-closet-picks/criterion-closet-picks.py",
+		"/C/nogueira/web-projects/criterion-closet-picks/source/getter.py",
+		"/C/nogueira/web-projects/criterion-closet-picks/README.md",
+		"/C/nogueira/web-projects/criterion-closet-picks/data/visits.csv",
 		"/Users/adamhadar/Documents/programming/criterion-closet-picks/source/searcher.py",
 		"/Users/adamhadar/Documents/programming/criterion-closet-picks/data/countries.csv",
 		"/Users/adamhadar/Documents/programming/criterion-closet-picks/data/visits.csv",
@@ -160,7 +240,7 @@
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -174,6 +254,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"chart",
+			"domain",
+			"bagged",
 			"url",
 			"compile",
 			"('{\\",
@@ -198,31 +281,59 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "criterion-closet-picks.py",
+					"file": "source/compile.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1305,
+						"buffer_size": 3258,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1188,
-								1188
+								711,
+								711
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 8,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 240.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1720,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								80,
+								80
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -232,61 +343,26 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "source/getter.py",
-					"semi_transient": false,
+					"buffer": 2,
+					"file": "criterion-closet-picks.py",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 9644,
+						"buffer_size": 1010,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6589,
-								6589
+								24,
+								24
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 8,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 368.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 2,
-					"file": "README.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3365,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1601,
-								1601
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -297,30 +373,31 @@
 				},
 				{
 					"buffer": 3,
-					"file": "data/visits.csv",
+					"file": "source/script.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11810,
+						"buffer_size": 14191,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3588,
+								3588
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 48.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -328,7 +405,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -343,18 +420,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.681558098592,
 			1.0
 		],
 		"rows":
@@ -376,7 +446,7 @@
 	"project": "criterion-closet-picks.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -417,8 +487,8 @@
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 253.0,
+	"side_bar_visible": false,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
