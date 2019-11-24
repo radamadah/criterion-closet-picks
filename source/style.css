@@ -89,12 +89,12 @@ ol detail {
 	}
 }
 @media(max-width: 720px){
-	/*chart {
+	chart {
 		margin-left: -6%;
 	}
 	chart > svg {
 		width: 6%;
-	}*/
+	}
 
 	.chart-helper {
 		grid-template-columns: 1fr;
