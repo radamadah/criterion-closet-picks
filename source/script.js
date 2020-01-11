@@ -166,7 +166,7 @@ function LegendView(jason, main){
 		let movie = jason.movies[spine]
 		let barInfo = document.getElementsByClassName('bar-info')[0]
 		barInfo.innerHTML = '#'+movie.spine_number+': <cite>'+movie.title+'</cite>. '+
-			'Directed by '+prettyList(movie.directors.map(function(d){return d.name}))+'. '+movie.year+'. <a href="https://criterion.com/films/'+movie.url+'">Criterion link</a>.<br/>'+ prettyList(movie.visitors.map(function(v){ return '<cite class="'+(v.spines_bagged.indexOf(movie.spine_number)==-1?'data2':'data1')+'"><a href="https://youtu.be/'+v.url+'">'+v.visitor+'</a></cite>' }))+'.'
+			'Directed by '+prettyList(movie.directors.map(function(d){return d.name}))+'. '+movie.year+'. <a href="https://criterion.com/'+movie.url+'">Criterion link</a>.<br/>'+ prettyList(movie.visitors.map(function(v){ return '<cite class="'+(v.spines_bagged.indexOf(movie.spine_number)==-1?'data2':'data1')+'"><a href="https://youtu.be/'+v.url+'">'+v.visitor+'</a></cite>' }))+'.'
 	}
 
 	DOM('div', main, div => {
@@ -335,7 +335,7 @@ function MovieListView(jason, main){
 		function(it){ return it.visitors.length },
 		function(it){ return '<list-num>'+it.spine_number+'</list-num>' },
 		function(it){ return '<cite>'+it.title+'</cite>' },
-		function(it){ return 'Directed by '+prettyList(it.directors.map(function(d){return d.name}))+'. '+it.year+'. <a href="https://criterion.com/films/'+it.url+'">Criterion link</a>.<br/>'+ prettyList(it.visitors.map(function(v){ return '<cite class="'+(v.spines_bagged.indexOf(it.spine_number)==-1?'data2':'data1')+'">'+v.visitor+'</cite>' }))+'.' },
+		function(it){ return 'Directed by '+prettyList(it.directors.map(function(d){return d.name}))+'. '+it.year+'. <a href="https://criterion.com/'+it.url+'">Criterion link</a>.<br/>'+ prettyList(it.visitors.map(function(v){ return '<cite class="'+(v.spines_bagged.indexOf(it.spine_number)==-1?'data2':'data1')+'">'+v.visitor+'</cite>' }))+'.' },
 		{
 			'spine #': function(a,b){ return comparAttr(a,b,'spine_number') },
 			'popularity': function(a,b){ let v = comparArray(b,a,'visitors'); if(v==0)v=comparAttr(a,b,'spine_number'); return v; },
